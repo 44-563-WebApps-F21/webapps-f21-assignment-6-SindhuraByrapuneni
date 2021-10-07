@@ -1,101 +1,99 @@
 <html>
     <head>
-       <title>Pass phraseby</title>
+        <tittle>Pass phraseby</tittle>
         <h1>"Pass phraseby"</h1>
         <h1>Sindhura Byrapuneni</h1>
-    </head>
-    <body>
-        <from>
-            <label for="form_secret">Enter the secret phrase</label>
-            <input type="password" value="Let me in" id="form_secret"><br><br>
-        
-            <label for="from_phrase">Enter a phrase</label>
-            <input type="text" id="from_phrase"><br><br>
-        
-            <input type="button" onclick="processPhrase()" value="Check the phrase">
-        </from>
-        
-        
-        <p id="result">correct: 0 wrong: 0</p>
-            <script>
-                correct = 0
-                wrong = 0
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+        crossorigin="anonymous"></script>
+        <body>
+            <form>
+                <label style="font-size: 20px" for="pwd">Enter the secret phrase</label>
+                <input
+                  type="password"
+                  id="pwd"
+                  value="Let me in"
+                  name="pwd"
+                  minlength="8"
+                /><br /><br />
+          
+                <label style="font-size: 20px" for="phrase">Enter a phrase</label>
+                <input
+                  style="margin-left: 45px"
+                  type="text"
+                  id="phrase"
+                  name="phrase"
+                /><br />
+                <br /><br />
+                <input type="button" onclick="processPhrase()" value="Check the phrase" />
+              </form>
+          
+              <div style="display: flex">
+               
+                <p id="result" >This text will be replaced </p>
+              </div>
+              <script>
+                let correct = 0;
+                let wrong = 0;
+               
                 function processPhrase() {
-                    console.log("Getting form values")
-                    secret = document.getElementById("form_secret").value
-                    phrase = document.getElementById("from_phrase").value
-                    out = document.getElementById("result")
-                    if (secret == phrase) {
-                        correct = correct + 1
-                        alert("Access allowed")
+                  console.log("Getting password and guess values");
+                  passwordValue = document.getElementById("pwd").value;
+                  phraseValue = document.getElementById("phrase").value;
+                  out = document.getElementById("result")
+                 
+                  if (passwordValue == phraseValue) {
+                    alert("Access allowed");
+                    correct = correct + 1;
+                    out.innerHTML = "correct: " +correct + "   "+"wrong: "+ wrong
+                  } else {
+                    alert("Access denied");
+                    wrong = wrong + 1;
+                    console.log("wrong", wrong);
+                    out.innerHTML = "wrong: "+wrong + "  "+ "correct: " +correct
+                   if(wrong >= 3){
+                   alert("account locked");
                     }
-                    else {
-                        wrong = wrong + 1
-                        alert("Access denied")
-                    }
-                    out.innerHTML = "correct: " + correct + "  wrong: " + wrong;
-        
+                  }
+                 
                 }
-            </script>
-
-<h2>babirusas</h2>
-<p id="result">The babirusas, also called deer-pigs</p>
-<br>
-    <script> 
-        var correct = 0
-        var wrong = 0
-        
-        
-        function processPhrase (){
-            console.log("Getting form values")
-            secret = document.getElementById("form1_secret").value
-            guess = document.getElementById("form1_guess").value
-            
-            //confirmed = confirm("Are these the values? "+secret+" and "+guess)
-             //result = secret.localeCompare(guess);
-            out = document.getElementById("result")
-            
-            if(secret == guess){
-                correct ++
-                alert("Access allowed!")
-                out.innerHTML = "correct score"+correct
-            } else {
-                wrong++
-                alert ("Access denied!")
-                out.innerHTML ="wrong score"+ wrong
-            }
-            out.innerHTML = "correct count"+ correct +" ; wrong count "+ wrong
-        }
-        </script>
-        <div class ="container">
-            <img src ="download1.jpg" width="200" height="200"  onclick="newImage()" id="image" >
-            <br>
-            <!-- <input type="button" onclick="rotateImage()" id="image"> -->
-            <script>
-                var usingImage = 1
-                function newImage(){
-                    switch(usingImage ){
-                        case 1:
-                          //  var img = document.createElement("img")
-                            //img.src = "download1.jpg"
-                            document.getElementById("image").src = "download1.jpg"
-                            usingImage = 2
-                            break
-                        case 2:
-                            //var img1 = document.createElement("img1")
-                            //img1.src = "download3.jpg"
-                            document.getElementById("image").src = "download3.jpg"
-                            usingImage = 3
-                            break
-                        case 3:
-                            document.getElementById("image").src = "download6.jpg"
-                            usingImage = 1
-                            break
-                        }
-        
-                }
-            </script>
-        
-        </div>
+             
+              </script>
+          
+          <div id="container">
+            <img  onclick="newImage()" 
+            src="download1.jpg" alt="your_keyword" width="200" height="200" id="getImage"  />
+          <div>
+          
+          <script>
+            let usingImage=1
+            var Image_Id = document.getElementById('getImage');
+            function  newImage(pic){
+              console.log(usingImage)
+             
+            switch (usingImage) {
+            case 1:
+            usingImage=2;
+            Image_Id.src='download1.jpeg';
+             break;
+             case 2:
+             usingImage=3;
+             Image_Id.src='download3.jpeg';
+             break;
+             case 3:
+             usingImage=1;
+             Image_Id.src='download6.jpeg';
+             break;
+             default:
+             alert("No imge was loaded");
+          } 
+          }
+          </script>
+       
     </body>
 </html>
